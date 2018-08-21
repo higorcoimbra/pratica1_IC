@@ -11,11 +11,11 @@ y = []
 
 # first membership function
 def mf1(x):
-	return math.fabs(x)
+	return 0.67*x+0.33
 
 # second membership function
 def mf2(x):
-	return -math.fabs(x)+1
+	return -0.67*x+0.33
 
 def createBeta(x):
 	beta = np.zeros(shape=(len(x),2))
@@ -48,10 +48,20 @@ P = np.dot(Xinv, Y)
 
 Z = np.dot(X,P);
 
+print(Z)
+
+plt.figure(1)
+
+plt.subplot(211)
 plt.xlabel("x");
 plt.ylabel("f(x)");
 plt.plot(x,Y, label="Expected output - f(x) = x²-0.2x-0.1");
+plt.legend()
+
+plt.subplot(212)
+plt.xlabel("x");
+plt.ylabel("f(x)");
 plt.plot(x,Z, label="Adjusted output");
 plt.legend()
-plt.show();
+plt.show()
 

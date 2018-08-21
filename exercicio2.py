@@ -28,16 +28,14 @@ def error(x):
 	return (1/2.0)*math.pow((y(x)-yd(x)), 2)
 
 def derivative(x):
-	diffy = y(x) - yd(x)
-
-	D['p1'] = diffy*(w1(x)/float((w1(x)+w2(x))))*x
-	D['p2'] = diffy*(w2(x)/float((w1(x)+w2(x))))*x
-	D['q1'] = diffy*(w1(x)/float((w1(x)+w2(x))))
-	D['q2'] = diffy*(w2(x)/float((w1(x)+w2(x))))
-	D['xm1'] = diffy*w2(x)*(y1(x)-y2(x))/float((w1(x)+w2(x))**2)*w1(x)*(x-P['xm1']/float(P['sig1']**2))
-	D['xm2'] = diffy*w1(x)*(y2(x)-y1(x))/float((w1(x)+w2(x))**2)*w2(x)*(x-P['xm2']/float(P['sig2']**2))
-	D['sig1'] = diffy*w2(x)*(y1(x)-y2(x))/float((w1(x)+w2(x))**2)*w1(x)*((x-P['xm1'])**2/float(P['sig1']**3))
-	D['sig2'] = diffy*w1(x)*(y2(x)-y1(x))/float((w1(x)+w2(x))**2)*w2(x)*((x-P['xm2'])**2/float(P['sig2']**3))
+	D['p1'] = (y(x) - yd(x))*(w1(x)/float((w1(x)+w2(x))))*x
+	D['p2'] = (y(x) - yd(x))*(w2(x)/float((w1(x)+w2(x))))*x
+	D['q1'] = (y(x) - yd(x))*(w1(x)/float((w1(x)+w2(x))))
+	D['q2'] = (y(x) - yd(x))*(w2(x)/float((w1(x)+w2(x))))
+	D['xm1'] = (y(x) - yd(x))*w2(x)*(y1(x)-y2(x))/float((w1(x)+w2(x))**2)*w1(x)*(x-P['xm1']/float(P['sig1']**2))
+	D['xm2'] = (y(x) - yd(x))*w1(x)*(y2(x)-y1(x))/float((w1(x)+w2(x))**2)*w2(x)*(x-P['xm2']/float(P['sig2']**2))
+	D['sig1'] = (y(x) - yd(x))*w2(x)*(y1(x)-y2(x))/float((w1(x)+w2(x))**2)*w1(x)*((x-P['xm1'])**2/float(P['sig1']**3))
+	D['sig2'] = (y(x) - yd(x))*w1(x)*(y2(x)-y1(x))/float((w1(x)+w2(x))**2)*w2(x)*((x-P['xm2'])**2/float(P['sig2']**3))
 
 Xin = np.arange(-2, 2.04, 0.04)
 time = 500
